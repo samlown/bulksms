@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 require 'cgi'
-require 'iconv'
+#require 'iconv'
 
 module Bulksms
 
@@ -61,7 +61,8 @@ module Bulksms
     end
 
     def encode_cgi_string(string)
-      CGI.escape(Iconv.iconv('ISO-8859-15//ignore', 'UTF-8', string)[0]).gsub(/%[0-9A-F]{2}/) do |match|
+      #CGI.escape(Iconv.iconv('ISO-8859-15//ignore', 'UTF-8', string)[0]).gsub(/%[0-9A-F]{2}/) do |match|
+      CGI.escape(string.encode('ISO-8859-15')).gsub(/%[0-9A-F]{2}/) do |match|
         code = GSM0338_EXTENDED_MAP[match]
         code ? "%BB%#{code}" : match
       end

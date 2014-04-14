@@ -47,6 +47,8 @@ module Bulksms
         'usa.bulksms.com'
       when :safrica
         'bulksms.2way.co.za'
+      when :community
+        'community.bulksms.com'
       when :spain
         'bulksms.com.es'
       else # :international
